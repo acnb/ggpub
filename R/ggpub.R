@@ -35,15 +35,15 @@ ggpub <- function(name, ...){
   }
 
 
-  if(!dir.exists(args['path'])){
-    dir.create(args['path'])
+  if(!dir.exists(args[['path']])){
+    dir.create(args[['path']])
   }
 
   if (args['device'] == 'pdf' & !'useDingbats' %in% names(args)){
     args['useDingbats']  <- FALSE
   }
 
-  args['filename'] <- paste0(name, '.', args['device'])
+  args['filename'] <- paste0(name, '.', args[['device']])
 
   do.call(ggsave, args)
 }
