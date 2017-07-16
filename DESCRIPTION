@@ -1,0 +1,19 @@
+Package: ggpub
+Type: Package
+Title: Publication ready figures with ggplot a tiny bit easier 
+Version: 0.1.0
+Authors@R: c(
+    person("Andreas", "Bietenbeck", , "code@bietenbeck.net", role = c("aut", "cre"))
+    )
+Description: This package uses good defaults to ease the creation of publication ready figures. 
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports: ggplot2,
+    ggthemes,
+    rprojroot
+Suggests: directlabels,
+    scales,
+    ggbeeswarm
+BugReports: https://github.com/acnb/ggpub/issues
+RoxygenNote: 6.0.1

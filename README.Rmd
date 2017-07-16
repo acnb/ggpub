@@ -1,0 +1,38 @@
+---
+title: "ggpub"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+[![Travis-CI Build Status](https://travis-ci.org/acnb/ggpub.png?branch=master)](https://travis-ci.org/acnb/ggpub) 
+
+
+# ggpub
+
+This package makes the creation of publication ready figures with ggplot a tiny bit easier. It trys to determine good defaults and is verbose about them. 
+
+```{r, eval=TRUE}
+library(ggplot2)
+library(ggthemes)
+library(ggpub) # determines good defaults at attachment
+
+
+ggplot(data=iris, aes(x=Sepal.Length, y=Sepal.Width)) + 
+  geom_point() +
+  theme_pub()
+```
+```{r, eval=FALSE}
+ggpub('iris') # saves the last plot in a default 'fig' directory.
+```
+
+
+This package is not on CRAN yet. To install please run
+
+```{r, eval=FALSE}
+install.packages("devtools")
+library(devtools)
+install_github("acnb/ggpub")
+```
