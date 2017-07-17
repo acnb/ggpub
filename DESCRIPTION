@@ -16,4 +16,5 @@ Suggests: directlabels,
     scales,
     ggbeeswarm
 BugReports: https://github.com/acnb/ggpub/issues
+URL: https://github.com/acnb/ggpub
 RoxygenNote: 6.0.1

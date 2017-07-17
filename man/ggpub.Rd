@@ -24,7 +24,8 @@ of \code{ggsave} can be used. They always take precedence over defaults.
 \examples{
 \dontrun{
 library(ggplot)
-ggplot(data=iris, aes(x=Sepal.Length, y=Sepal.Width)) + geom_point()
+ggplot(data=iris, aes(x=Sepal.Length, y=Sepal.Width)) +
+ geom_point()
 ggpub('iris')
 }
 }
