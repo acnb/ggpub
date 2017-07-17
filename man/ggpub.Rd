@@ -4,10 +4,13 @@
 \alias{ggpub}
 \title{Create publication ready figure}
 \usage{
-ggpub(name, ...)
+ggpub(name, widthFomat = c("twoColumns", "oneColumn"), ...)
 }
 \arguments{
 \item{name}{name of the figure without file extension (eg. '.jpg')}
+
+\item{widthFomat}{target width for figure (twoColumns or oneColumn). Is
+overwritten by 'width'.}
 
 \item{...}{Other arguments passed on to gggsave.}
 }
@@ -26,6 +29,6 @@ of \code{ggsave} can be used. They always take precedence over defaults.
 library(ggplot)
 ggplot(data=iris, aes(x=Sepal.Length, y=Sepal.Width)) +
  geom_point()
-ggpub('iris')
+ggpub('iris', 'oneColumn')
 }
 }

@@ -18,7 +18,7 @@ A clean theme based on the theme by Koundinya Desiraju (https://rpubs.com/Koundy
 \dontrun{
 library(ggplot)
 ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
- geom_point() + 
+ geom_point() +
  theme_pub()
 }
 }

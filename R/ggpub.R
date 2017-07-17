@@ -9,6 +9,8 @@
 #' of \code{ggsave} can be used. They always take precedence over defaults.
 #'
 #' @param name name of the figure without file extension (eg. '.jpg')
+#' @param widthFomat target width for figure (twoColumns or oneColumn). Is
+#'     overwritten by 'width'.
 #' @param ... Other arguments passed on to gggsave.
 #' @export
 #' @import ggplot2
@@ -18,9 +20,9 @@
 #' library(ggplot)
 #' ggplot(data=iris, aes(x=Sepal.Length, y=Sepal.Width)) +
 #'  geom_point()
-#' ggpub('iris')
+#' ggpub('iris', 'oneColumn')
 #' }
-ggpub <- function(name, ...){
+ggpub <- function(name, widthFomat = c('twoColumns', 'oneColumn'), ...){
   args <- list(...)
 
   if (!"dpi" %in% names(args)){
@@ -33,6 +35,24 @@ ggpub <- function(name, ...){
 
   if (!"path" %in% names(args)){
     args["path"] <- getOption("ggpub.path")
+  }
+
+  if (!"width" %in% names(args)){
+    widthFomat <- match.arg(widthFomat)
+    if (widthFomat == "twoColumns"){
+      args["width"] <- getOption("ggpub.widthTwoColumns")
+    }
+    else {
+      args["width"] <- getOption("ggpub.widthOneColumn")
+    }
+  }
+
+  if (!"height" %in% names(args)){
+      args["height"] <- ceiling(args[["width"]] *2/3)
+  }
+
+  if (!"units" %in% names(args)){
+    args["units"] <- getOption("ggpub.units")
   }
 
 
@@ -64,7 +84,7 @@ ggpub <- function(name, ...){
 #' \dontrun{
 #' library(ggplot)
 #' ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width)) +
-#'  geom_point() + 
+#'  geom_point() +
 #'  theme_pub()
 #' }
 theme_pub <- function(base_size = 12, base_family = "") {
@@ -105,18 +125,24 @@ showGgpubDefaults <- function(){
   dpi <- getOption("ggpub.dpi")
   type <- getOption("ggpub.type")
   path <- getOption("ggpub.path")
+  twoColumns <- getOption("ggpub.widthTwoColumns")
+  oneColumn <- getOption("ggpub.widthOneColumn")
+  units <- getOption("ggpub.units")
 
   if (is.null(path)){
     output <- paste0("No directory for figures could be determined. ",
                      "Please supply one with setPath(option). Figures ",
                      "will be created of type ", type,
-                     " with a resolution of ", dpi, " dpi.")
+                     " with a resolution of ", dpi, " dpi. ")
   }
   else{
     output <- paste0("Figures of type ", type, " will be saved in ", path, ". ",
                      "This directory will be created if it does not exist. ",
-                     "The plot resolution will be ", dpi, " dpi.")
+                     "The plot resolution will be ", dpi, " dpi. ")
   }
+  output <- paste0(output, "Width for figures spanning two columns or one column will be ",
+                   twoColumns, " ", units, " and ", oneColumn, " ", units, " respectively.")
+
   output
 }
 
@@ -148,4 +174,22 @@ setDpi <- function(option){
 #' @export
 setType <- function(option){
   options("ggpub.type" = option)
+}
+
+#' @rdname setPath
+#' @export
+setWidthTwoColumns <- function(option){
+  options("ggpub.widthTwoColumns" = option)
+}
+
+#' @rdname setPath
+#' @export
+setWidthOneColumn <- function(option){
+  options("ggpub.widthOneColumn" = option)
+}
+
+#' @rdname setPath
+#' @export
+setUnits <- function(option){
+  options("ggpub.units" = option)
 }

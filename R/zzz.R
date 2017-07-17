@@ -14,7 +14,10 @@ has_fig <- rprojroot::has_dirname("fig")
   op <- options()
   op.ggpub <- list(
     ggpub.dpi = 300,
-    ggpub.type = "png"
+    ggpub.type = "png",
+    ggpub.widthOneColumn = 90,
+    ggpub.widthTwoColumns = 190,
+    ggpub.units = 'mm'
   )
 
   if (!is.null(root)){

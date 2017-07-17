@@ -4,6 +4,9 @@
 \alias{setPath}
 \alias{setDpi}
 \alias{setType}
+\alias{setWidthTwoColumns}
+\alias{setWidthOneColumn}
+\alias{setUnits}
 \title{Change defaults}
 \usage{
 setPath(option)
@@ -11,6 +14,12 @@ setPath(option)
 setDpi(option)
 
 setType(option)
+
+setWidthTwoColumns(option)
+
+setWidthOneColumn(option)
+
+setUnits(option)
 }
 \arguments{
 \item{option}{new value for default}
