@@ -14,7 +14,7 @@ library(ggthemes)
 library(ggpub) # determines good defaults at attachment
 ```
 
-    ## Figures of type png will be saved in C:/Users/andi/Documents/Code/ggpub/fig. This directory will be created if it does not exists. The plot resolution will be 300 dpi.
+    ## Figures of type png will be saved in C:/Users/andi/Documents/RCode/ggpub/fig. This directory will be created if it does not exist. The plot resolution will be 300 dpi.
 
 ``` r
 ggplot(data=iris, aes(x=Sepal.Length, y=Sepal.Width)) + 
