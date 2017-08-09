@@ -4,12 +4,12 @@
 \alias{ggpub}
 \title{Create publication ready figure}
 \usage{
-ggpub(name, widthFomat = c("twoColumns", "oneColumn"), ...)
+ggpub(name, formatWidth = c("twoColumns", "oneColumn"), ...)
 }
 \arguments{
 \item{name}{name of the figure without file extension (eg. '.jpg')}
 
-\item{widthFomat}{target width for figure (twoColumns or oneColumn). Is
+\item{formatWidth}{target width for figure (twoColumns or oneColumn). Is
 overwritten by 'width'.}
 
 \item{...}{Other arguments passed on to gggsave.}

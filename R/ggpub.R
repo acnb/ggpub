@@ -9,7 +9,7 @@
 #' of \code{ggsave} can be used. They always take precedence over defaults.
 #'
 #' @param name name of the figure without file extension (eg. '.jpg')
-#' @param widthFomat target width for figure (twoColumns or oneColumn). Is
+#' @param formatWidth target width for figure (twoColumns or oneColumn). Is
 #'     overwritten by 'width'.
 #' @param ... Other arguments passed on to gggsave.
 #' @export
@@ -22,7 +22,7 @@
 #'  geom_point()
 #' ggpub('iris', 'oneColumn')
 #' }
-ggpub <- function(name, widthFomat = c('twoColumns', 'oneColumn'), ...){
+ggpub <- function(name, formatWidth = c('twoColumns', 'oneColumn'), ...){
   args <- list(...)
 
   if (!"dpi" %in% names(args)){
@@ -38,8 +38,8 @@ ggpub <- function(name, widthFomat = c('twoColumns', 'oneColumn'), ...){
   }
 
   if (!"width" %in% names(args)){
-    widthFomat <- match.arg(widthFomat)
-    if (widthFomat == "twoColumns"){
+    formatWidth <- match.arg(formatWidth)
+    if (formatWidth == "twoColumns"){
       args["width"] <- getOption("ggpub.widthTwoColumns")
     }
     else {
